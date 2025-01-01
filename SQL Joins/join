@@ -1,0 +1,48 @@
+🌟 Exploring Advanced SQL Joins: A Mobile Product and Specification Case Study! 🌟
+
+I recently worked on a comprehensive SQL project, showcasing how JOINS and UNION ALL queries can merge datasets to generate insightful results. Here’s what I did:
+
+Database Structure:
+product Table: Contains mobile product details such as ID, name, price, and brand.
+spacifications Table: Stores the RAM and ROM configurations of the mobiles, linked by the product ID.
+Key SQL Queries:
+1️⃣ INNER JOIN:
+Combines rows from both tables where there’s a match in product_id. This ensures we only get products with specifications.
+
+SELECT product.product_id, product.product_name, spacifications.RAM, spacifications.ROM  
+FROM product  
+JOIN spacifications  
+ON product.product_id = spacifications.ID;  
+
+2️⃣ LEFT JOIN:
+Includes all products, even if they don’t have matching specifications, displaying unmatched rows with NULL.
+
+
+SELECT product.product_id, product.product_name, spacifications.RAM, spacifications.ROM  
+FROM product  
+LEFT JOIN spacifications  
+ON product.product_id = spacifications.ID;  
+
+3️⃣ RIGHT JOIN:
+Similar to LEFT JOIN, but prioritizes specifications, including unmatched rows from the spacifications table.
+
+
+SELECT product.product_id, product.product_name, spacifications.RAM, spacifications.ROM  
+FROM product  
+RIGHT JOIN spacifications  
+ON product.product_id = spacifications.ID;  
+
+4️⃣ UNION ALL with LEFT and RIGHT JOINs:
+Combines results from both LEFT JOIN and RIGHT JOIN to ensure we capture all possible records from both tables.
+
+SELECT product.product_id, product.product_name, spacifications.RAM, spacifications.ROM  
+FROM product  
+LEFT JOIN spacifications  
+ON product.product_id = spacifications.ID  
+UNION ALL  
+SELECT product.product_id, product.product_name, spacifications.RAM, spacifications.ROM  
+FROM product  
+RIGHT JOIN spacifications  
+ON product.product_id = spacifications.ID;  
+
+This approach provides a robust understanding of how datasets can be linked and analyzed using SQL joins, offering flexibility for data integration and analysis.
